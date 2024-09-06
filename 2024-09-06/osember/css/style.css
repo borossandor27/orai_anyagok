@@ -1,0 +1,22 @@
+:root {
+    --base-color: #000080;
+    --base-bacground-color: #FFE4B5;
+    --focim-color: #000080;
+    --focim-background-color: #FFD700;
+}
+
+body {
+    color: var(--base-color);
+    background-color: var(--base-bacground-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5rem;
+}
+
+h1 {
+    color: var(--focim-color);
+    background-color: var(--focim-background-color);
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+}
