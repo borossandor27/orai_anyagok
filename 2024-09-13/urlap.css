@@ -1,0 +1,44 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    margin: 10px;
+}
+div.bevitel label[for="email"] {
+    color: black;
+}
+label {
+    display: inline-block;
+    width: 35%;
+    color: blue;
+}
+
+div.bevitel {
+    margin: 10px 0;
+    width: 100%;
+    display: inline-block;
+}
+ input:required:invalid {
+    border: 1px solid red;
+}
+label[for][for]:has(+ input[required])::before {
+    content: "* ";
+    color: red;
+    /* Csillag színe */
+    font-weight: bold;
+    /* Csillag kiemelése */
+}
+
