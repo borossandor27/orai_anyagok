@@ -1,4 +1,6 @@
 const gomb = document.getElementById("gomb");
 gomb.addEventListener("click", () => {
-    alert("Az adatok feldolgozása megtörtént!");
+    // Az adatok feldolgozása
+    const nev = document.getElementById("nev").value;  
+    alert("Üdvözöllek, " + nev + "!");  
 });
