@@ -1,0 +1,7 @@
+body{
+    counter-reset: sorszam;
+}
+.card-title::before{
+    counter-increment: sorszam;
+    content: counter(sorszam) ". ";
+}

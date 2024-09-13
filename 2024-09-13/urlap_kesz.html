@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztráció</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="regisztracio">
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Regisztráció</legend>
+                <div class="beviteli">
+                    <label for="nev">Név:</label>
+                    <input type="text" name="nev" id="nev" required>
+                </div>
+                <div class="beviteli">
+                    <label for="email">E-mail cím:</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="beviteli">
+                    <label for="password1">Jelszó:</label>
+                    <input type="password" name="password1" id="password1" required>
+                </div>
+                <div class="beviteli">
+                    <label for="password2">Jelszó újra:</label>
+                    <input type="password" name="password2" id="password2" required>
+                </div>
+                <div class="beviteli">
+                    <label for="szuletesi_datum">Születési dátum:</label>
+                    <input type="date" name="szuletesi_datum" id="szuletesi_datum" required>
+                </div>
+                <div class="beviteli">
+                    <label for="nem">Nem:</label>
+                    <input type="radio" name="nem" id="nem" value="ferfi" required>Férfi
+                    <input type="radio" name="nem" id="nem" value="no" required>Nő
+                    <input type="radio" name="nem" id="nem" value="egyeb" required>Egyéb
+                </div>
+                <div class="beviteli">
+                    <!-- egy számlaszám 16 vagy 24 számból áll, és nyolcasával szokás őt elválasztani. -->
+                    <label for="szamlaszam">Számlaszám:</label>
+                    <input type="text" name="szamlaszam" id="szamlaszam" pattern="^\d{8}([- ]?\d{8}){1,2}$" required>
+                </div>
+                <div class="beviteli">
+                    <label for="szemszin">Szeme színe:</label>
+                    <select name="szemszin" id="szemszin" required>
+                        <option value="kek">Kék</option>
+                        <option value="zold">Zöld</option>
+                        <option value="barna">Barna</option>
+                        <option value="egyeb">Egyéb</option>
+                    </select>
+                </div>
+                <div class="beviteli">
+                    <label for="profile_picture">Profilkép:</label>
+                    <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+                </div>
+                <p>
+                    <input type="checkbox" name="nagyon_magas" id="nagyon_magas">
+                    <label for="egyedi">200 cm feletti</label>
+                    <input type="checkbox" name="sulyos" id="sulyos">
+                    <label for="egyedi">120 kg feletti</label>
+
+                </div>
+                <div class="beviteli">
+                    <label for="description">Bemutatkozás:</label>
+                    <textarea name="description" id="description"></textarea>
+                </div>
+                <button type="submit">Regisztráció</button>
+            </fieldset>
+        </form>
+    </div>
+    <div id="bejelentkezes">
+        <form action="#" method="get">
+            <legend>Belépés</legend>
+            <fieldset>
+                <div class="beviteli">
+                    <label for="email">E-mail cím:</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="beviteli">
+                    <label for="password">Jelszó:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <button type="submit">Bejelentkezés</button>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+
+</html>
