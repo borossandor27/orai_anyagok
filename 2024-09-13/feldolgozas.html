@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Első JavaScript</title>
     <link rel="stylesheet" href="feldolgozas.css">
-    
+
 </head>
+
 <body>
     <h1>Első JavaScript</h1>
-    <label for="nev">Név:</label>
-    <input type="text" id="nev" name="nev">
+    <!-- Bekér két számot és elvégzi a műveletet -->
+    <label for="szam1">Első szám: </label>
+    <input type="number" id="szam1" name="szam1" required value="0"><br>
+    <label for="szam2"> Második szám: </label>
+    <input type="number" id="szam2" name="szam2" required value="0"><br>
     <button id="gomb">Csinál valamit</button>
+    <p id="eredmeny"></p>
     <script src="feldolgozas.js"></script>
 </body>
+
 </html>
