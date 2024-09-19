@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irányítószám</title>
+    <link rel="stylesheet" href="zipcode.css">
+    <script src="zipcode.js"></script>
+</head>
+
+<body>
+    <h1>Irányítószám </h1>
+    <form>
+        <label for="country">country: </label>
+        <select name="country" id="country">
+            <option value="hu">Magyarország</option>
+            <option value="us">USA</option>
+        </select>
+        <label for="postal_code">Irányítószám </label>
+        <input type="number" name="postal_code" id="postal_code">
+        <button type="button" id="request">Küldés</button>
+    </form>
+    <div id="result"></div>
+</body>
+
+</html>
