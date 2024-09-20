@@ -1,0 +1,3 @@
+https://retoolapi.dev/2Lud2e/data
+
+GET - https://retoolapi.dev/2Lud2e/data
