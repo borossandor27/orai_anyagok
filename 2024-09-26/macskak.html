@@ -33,8 +33,12 @@
         </svg>
         <h1>Macskák</h1>
     </header>
-    <div id="urlapDiv" class="d-none">
+    <div id="urlapDiv">
         <form id="urlap">
+            <div class="form-group">
+                <label for="id">Azonosító:</label>
+                <input type="number" class="form-control" id="id" name="id" readonly>
+            </div>
             <div class="form-group">
                 <label for="nev">Név:</label>
                 <input type="text" class="form-control" id="nev" name="nev">
@@ -66,7 +70,7 @@
             </div>
         </form>
     </div>
-    <div id="kartyakDiv">
+    <div id="kartyakDiv" class="row">
 
     </div>
 </body>
