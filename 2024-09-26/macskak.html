@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macskák</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
         integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,13 +66,14 @@
                 </label>
             </div>
             <div class="d-flex justify-content-around">
-                <button type="button" id="insert" class="btn btn-outline-warning">Létrehoz</button>
+                <button type="button" id="insert" class="btn btn-outline-warning" onclick="adatokAdatbazisba()">Létrehoz</button>
                 <button type="button" id="select" class="btn btn-outline-primary">Megjelenít</button>
                 <button type="button" id="update" class="btn btn-outline-success">Módosít</button>
                 <button type="button" id="delete" class="btn btn-outline-danger">Töröl</button>
             </div>
         </form>
     </div>
+    <p><button type="button" id="insert" class="btn btn-outline-warning" onclick="insertMacska()"><i class="fa-regular fa-square-plus"></i></button></p>
     <div id="kartyakDiv" class="row">
 
     </div>

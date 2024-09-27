@@ -77,7 +77,46 @@ async function macskaModositKuldese(macskaId) {
     const valasz = await response.json(); // a válasz is JSON formátumú lesz, tartalma megegyezik az elküldöttel
     console.log(valasz);
 }
+function insertMacska() {
+    console.log("Beszúrás");
+    // megjelenítjük az űrlapot
+    document.getElementById("urlapDiv").style.display = "block";
+    document.getElementById("kartyakDiv").style.display = "none";
+    // kitöröljük az input mezők tartalmát
+    document.getElementById("id").value="";
+    document.getElementById("nev").value = "";
+    document.getElementById("him").checked = true;
+    document.getElementById("szuletett").value = "2024";
+    document.getElementById("ivartalanitott").checked = false;
+ 
 
+}
+async function adatokAdatbazisba() {
+    console.log("Adatok küldése");
+    const data = {
+        nev: document.getElementById("nev").value,
+        nem: (document.getElementById("him").checked?"him":"nosteny"),
+        szuletett: document.getElementById("szuletett").value,
+        ivartalanitott: document.getElementById("ivartalanitott").checked
+    };
+    console.log(data);
+    const response = await fetch(backendurl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+        console.error("Hiba az adatok küldésekor!");
+    } else {
+        console.log("Adatok küldése sikeres!");
+        alert("Adatok küldése sikeres!");
+        adatokLetoltese();
+    }
+    const valasz = await response.json(); // a válasz is JSON formátumú lesz, tartalma megegyezik az elküldöttel
+    console.log(valasz);
+}
 async function macskaTorles(id) {
     console.log("Törlés: " + id);
     if (!confirm("Biztosan törölni akarod?")) {
