@@ -51,9 +51,32 @@ async function adottMacskaAdatainakBetoltese(id) {
         macskaModositKuldese(id);
     };
 }
-async function macskaModositKuldese(params) {
-    console.log("Módosítás küldése: " + params);
+async function macskaModositKuldese(macskaId) {
+    console.log("Módosítás küldése: " + macskaId);
+    const data = {
+        id: macskaId,
+        nev: document.getElementById("nev").value,
+        nem: (document.getElementById("him").checked?"him":"nosteny"),
+        szuletett: document.getElementById("szuletett").value,
+        ivartalanitott: document.getElementById("ivartalanitott").checked
+    };
+    console.log(data);
+    const response = await fetch(backendurl + "/" + macskaId, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+        console.error("Hiba a módosítás során!");
+    } else {
+        console.log("Módosítás sikeres!");
+    }
+    const valasz = await response.json(); // a válasz is JSON formátumú lesz, tartalma megegyezik az elküldöttel
+    console.log(valasz);
 }
+
 function macskaTorles(id) {
     console.log("Törlés: " + id);
 }
