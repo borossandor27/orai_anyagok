@@ -45,11 +45,14 @@ async function adottMacskaAdatainakBetoltese(id) {
         document.getElementById("nosteny").checked = true;
     }
     document.getElementById("szuletett").value = data.szuletett;
-    document.getElementById("ivartalanitott").checked = true;
+    document.getElementById("ivartalanitott").checked = (data.ivartalanitott?true:false);
     //-- a módosítás gomb eseménykezelőjébe beírjuk az id-t
     document.getElementById("update").onclick = function () {
         macskaModositKuldese(id);
     };
+}
+async function macskaModositKuldese(params) {
+    console.log("Módosítás küldése: " + params);
 }
 function macskaTorles(id) {
     console.log("Törlés: " + id);
