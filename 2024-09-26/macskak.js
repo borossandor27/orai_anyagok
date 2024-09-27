@@ -72,13 +72,27 @@ async function macskaModositKuldese(macskaId) {
         console.error("Hiba a módosítás során!");
     } else {
         console.log("Módosítás sikeres!");
+        alert("Módosítás sikeres!");
     }
     const valasz = await response.json(); // a válasz is JSON formátumú lesz, tartalma megegyezik az elküldöttel
     console.log(valasz);
 }
 
-function macskaTorles(id) {
+async function macskaTorles(id) {
     console.log("Törlés: " + id);
+    if (!confirm("Biztosan törölni akarod?")) {
+        return; // ha a felhasználó nem válaszol igennel, akkor nem folynak tovább a műveletek
+    }
+    const response = await fetch(backendurl + "/" + id, {
+        method: "DELETE"
+    });
+    if (!response.ok) {
+        console.error("Hiba a törlés során!");
+    } else {
+        console.log("Törlés sikeres!");
+        alert("Törlés sikeres!");
+        adatokLetoltese();
+    }
 }
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("urlapDiv").style.display = "none";
