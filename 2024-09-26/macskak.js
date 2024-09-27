@@ -113,6 +113,10 @@ async function adatokAdatbazisba() {
         console.log("Adatok küldése sikeres!");
         alert("Adatok küldése sikeres!");
         adatokLetoltese();
+        // urlap elrejtése
+        document.getElementById("urlapDiv").style.display = "none";
+        // kártyák megjelenítése
+        document.getElementById("kartyakDiv").style.display = "block";
     }
     const valasz = await response.json(); // a válasz is JSON formátumú lesz, tartalma megegyezik az elküldöttel
     console.log(valasz);
