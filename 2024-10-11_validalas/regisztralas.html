@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webáruház Regisztráció</title>
+    <link rel="stylesheet" href="regisztralas.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Webáruház Regisztráció</h2>
+    <form action="/submit_registration" method="post">
+        
+        <!-- Teljes név: 
+         - legyen benne legalább egy szóköz
+         - legalább 5 karakter legyen benne 
+         - nagybetűvel kezdődik minden szóköz utáni szó
+
+        ^[A-Z][a-z]+(?: [A-Z][a-z]+)+$
+
+         Magyarázat:
+            ^ – A kifejezés elejét jelzi.
+            [A-Z] – A teljes név első szava nagybetűvel kezdődik.
+            [a-z]+ – Az első szót nagybetű követi, amit legalább egy kisbetű alkot.
+            (?: [A-Z][a-z]+)+ – A (?: ...) egy nem rögzítő csoport, amely azt vizsgálja, hogy legalább egy szóköz van, amely után egy újabb szó nagybetűvel kezdődik ([A-Z]), és ezt kisbetűk követik ([a-z]+). A + jel azt biztosítja, hogy legyen legalább egy szóköz utáni szó.
+            $ – A kifejezés végét jelzi.
+                -->
+        <label for="fullname">Teljes név:</label>
+        <input type="text" id="fullname" name="fullname" required pattern="^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+(?: [A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)+$" title="A teljes névnek legalább két szóból kell állnia, nagybetűvel kezdődve, ékezetes betűk is megengedettek.">
+
+        <!-- Email cím -->
+        <label for="email">Email cím:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Jelszó 
+        Ellenőrzés:
+        - legalább 8 karakter legyen benne
+        - nagybetűt, kisbetűt, számjegyet és speciális karaktert tartalmazzon legalább egyett
+        - legalább egy speciális karaktert tartalmazzon az alábbiak közül: !@#$%^&*()-+=,./?
+        - ne tartalmazzon szóközt 
+        -->
+        <label for="password">Jelszó:</label>
+        <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-+=,./?])[0-9a-zA-Z!@#$%^&*()-+=,./?]{8,}$" required>
+
+        <!-- Jelszó megerősítése -->
+        <label for="confirm_password">Jelszó megerősítése:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+
+        <!-- Telefonszám -->
+        <label for="phone">Telefonszám:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+36 20 123 4567">
+
+        <!-- Szállítási cím -->
+        <label for="address">Szállítási cím:</label>
+        <input type="text" id="address" name="address" placeholder="Utca, házszám" required>
+        <input type="text" id="city" name="city" placeholder="Város" required>
+        <input type="text" id="postal_code" name="postal_code" placeholder="Irányítószám" required>
+        <input type="text" id="country" name="country" placeholder="Ország" required>
+
+        <!-- Számlázási cím ugyanaz, mint a szállítási? -->
+        <label><input type="checkbox" id="same_address" name="same_address"> A számlázási cím megegyezik a szállítási címmel</label>
+
+        <!-- Hírlevél feliratkozás -->
+        <label><input type="checkbox" id="newsletter" name="newsletter"> Feliratkozom a hírlevélre</label>
+
+        <!-- Feltételek elfogadása -->
+        <label><input type="checkbox" id="terms" name="terms" required> Elfogadom a <a href="#">felhasználási feltételeket</a></label>
+
+        <!-- Regisztráció gomb -->
+        <input type="submit" class="submit-btn" value="Regisztráció">
+    </form>
+</div>
+
+</body>
+</html>
