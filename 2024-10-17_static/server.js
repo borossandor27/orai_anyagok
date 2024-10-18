@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, 'public'))); //-- statikus fájlok b
 
 app.get('/', (req, res) => {
     //-- index.html visszakülése
-    console.log(__dirname);
     res.header('Content-Type', 'text/html; charset=utf-8');
     res.status(201).sendFile(__dirname + '/public/index.html');
 });
