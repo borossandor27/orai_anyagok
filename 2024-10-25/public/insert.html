@@ -16,15 +16,15 @@
         <header>
             <h1>Új gyümölcs</h1>
         </header>
-        <form action="http://localhost:3000/fruit" method="post">
+        <form action="http://localhost:3000/fruit" method="post" enctype="multipart/form-data">
             <p class="beviteli">
-                <input type="text" name="megnevezes" id="megnevezes" min="5" placeholder="Megnevezés" value="citrom">
+                <input type="text" name="megnevezes" id="megnevezes" min="5" placeholder="Megnevezés" value="citrom" required>
             </p>
             <p class="beviteli">
-                <input type="number" name="egysegara" id="egysegara" placeholder="egységára" value="575">
+                <input type="number" name="egysegara" id="egysegara" placeholder="egységára" value="575" required>
             </p>
             <p class="beviteli">
-                <input type="number" name="mennyiseg" id="mennyiseg" placeholder="mennyiség" value="3.5">
+                <input type="number" name="mennyiseg" id="mennyiseg" placeholder="mennyiség" value="3.5" step=".01" required>
             
                 <select name="mennyisegiEgyseg" id="mennyisegiEgyseg">
                     <option value="kg" selected>kg</option>
