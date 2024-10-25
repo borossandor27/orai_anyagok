@@ -16,7 +16,7 @@
         <header>
             <h1>Új gyümölcs</h1>
         </header>
-        <form action="http://localhost:3000/fruit" method="post" enctype="multipart/form-data">
+        <form action="http://localhost:3000/fruit" method="post">
             <p class="beviteli">
                 <input type="text" name="megnevezes" id="megnevezes" min="5" placeholder="Megnevezés">
             </p>
@@ -31,7 +31,7 @@
                     <option value="db">db</option>  
                 </select>
             <p class="beviteli">
-                <input type="submit" value="Új gyümölcs" id="createButton">
+                <button type="button"  id="createButton">Új gyümölcs</button>
             </p>
         </form>
 

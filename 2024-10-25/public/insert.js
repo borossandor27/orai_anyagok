@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const createButton = document.getElementById("createButton");
-    createButton.addEventListener("click", function () {
+    createButton.addEventListener("click", function (event) {
+        //-- böngésző alapértelmezés felülírása
+        event.preventDefault();
+
+        //-- mező tartalmakat JSON string formátumúra alakitjuk
         const megnevezes = document.getElementById("megnevezes").value;
         const egysegara = document.getElementById("egysegara").value;
         const mennyiseg = document.getElementById("mennyiseg").value;
@@ -14,9 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let backendurl = "http://localhost:3000/fruit";
         let response = fetch(backendurl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
             body: JSON.stringify(json)
         })
         let data = response.json();
