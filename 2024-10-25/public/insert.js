@@ -1,6 +1,8 @@
+const backendurl = "http://localhost:3000/fruit";
+
 document.addEventListener("DOMContentLoaded", function () {
     const createButton = document.getElementById("createButton");
-    createButton.addEventListener("click", function (event) {
+    createButton.addEventListener("click",async function (event) {
         //-- böngésző alapértelmezés felülírása
         event.preventDefault();
 
@@ -15,12 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
             "mennyisegiEgyseg":"${mennyisegiEgyseg}"}`; //-- mező tartalmakat JSON string formátumúra alakitjuk
         const json = JSON.parse(jsontext); // JSON stringet JSON objektummá alakitja
         console.log(json);
-        let backendurl = "http://localhost:3000/fruit";
-        let response = fetch(backendurl, {
+        const response =await fetch(backendurl, {
             method: 'POST',
             body: JSON.stringify(json)
-        })
-        let data = response.json();
-        console.log(data);
+        });
+        if (response.status === 200) {
+            alert("Sikeres adatfelvitel");
+        } else {    
+            alert("Sikertelen adatfelvitel");
+        }
+        console.log(response);
     });
 });
