@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Új gyümölcs</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Uj gyumolcs">
+    <meta name="keywords" content="uj, gyumolcs">
+    <script src="insert.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>Új gyümölcs</h1>
+        </header>
+        <form action="#" method="post">
+            <p class="beviteli">
+                <input type="text" name="megnevezes" id="megnevezes" placeholder="Megnevezés">
+            </p>
+            <p class="beviteli">
+                <input type="number" name="egysegara" id="egysegara" placeholder="egységára">
+            </p>
+            <p class="beviteli">
+                <input type="number" name="mennyiseg" id="mennyiseg" placeholder="mennyiség">
+            
+                <select name="mennyisegiEgyseg" id="mennyisegiEgyseg">
+                    <option value="kg" selected>kg</option>
+                    <option value="db">db</option>  
+                </select>
+            <p class="beviteli">
+                <input type="submit" value="Uj gyumolcs">
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
