@@ -48,3 +48,16 @@ button {
     box-sizing: border-box;
     border-radius: 5px;
 }
+.card {
+    background-color: #ff69b4;
+    padding: 5vh;
+    max-width: 15%;
+    min-width: 15rem;
+    margin: 2vh auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
