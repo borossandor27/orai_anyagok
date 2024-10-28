@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./css/chat.css">
+</head>
+
+<body>
+    <div id="chatWindow">
+        <div id="messageContainer" class="messages">
+            <!-- Dinamikusan hozzáadott üzenetek -->
+
+            <div class="messageDiv">
+                <img src="/images/hokuszpok.svg" alt="Avatar">
+                <p>Sweet! So, what do you wanna do today?</p>
+                <span class="time-right">07:38</span>
+            </div>
+
+        </div> <!-- üzenetek vége ----->
+        <form class="message-form" method="post">
+            <textarea id="messageInput" placeholder="Írja be az üzenetet..." rows="1" required></textarea>
+            <button id="kuldesGomb" type="button"> <i class="fas fa-paper-plane"></i> </button>
+        </form>
+    </div>
+    <script>
+        var kerdesValasz = [];
+        const backendUrl="https://merlinvizsga.hu/api/chat";
+        document.addEventListener("DOMContentLoaded", function () {
+            const messageInput = document.getElementById("messageInput");
+            const kuldesGomb = document.getElementById("kuldesGomb");
+
+            kuldesGomb.style.display = "none";
+            kuldesGomb.addEventListener("click", function () {
+                event.preventDefault();
+                const messageContainer = document.getElementById("messageContainer");
+
+                // Üzenet hozzáadása
+                const messageText = messageInput.value.trim();
+                if (messageText) {
+                    // Üzenet létrehozása
+                    kerdesValasz.push({ "kerdes": messageText });
+                    const messageElement = document.createElement("div");
+                    messageElement.classList.add("messageDiv", "darker");
+                    //---- Üzenet elküldőjének képe ----
+                    const img = document.createElement("img");
+                    img.setAttribute("src", "https://randomuser.me/api/portraits/men/40.jpg");
+                    img.setAttribute("alt", "Avatar");
+                    img.classList.add("right");
+                    messageElement.appendChild(img);
+                    //-- Üzenet szövege ----
+                    const bekezdes = document.createElement("p");
+                    bekezdes.textContent = messageText;
+                    messageElement.appendChild(bekezdes);
+                    //---- Üzenet elküldésének ideje ----
+                    const timeSpan = document.createElement("span");
+                    timeSpan.textContent = new Date().toLocaleTimeString();
+                    messageElement.appendChild(timeSpan);
+                    // Üzenet hozzáadása a megjelenítőhöz
+                    messageContainer.appendChild(messageElement);
+                    // Görgetés az utolsó üzenethez
+                    messageContainer.scrollTop = messageContainer.scrollHeight;
+
+                    // Üzenet mező ürítése
+                    messageInput.value = "";
+                    document.getElementById("kuldesGomb").style.display = "none";
+                    // Válaszüzenet kérése az API-tól
+                    fetch(backendUrl, {
+                        method: "POST", 
+                        headers: { 
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        }, 
+                        body: JSON.stringify(kerdesValasz) })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Válaszüzenet hozzáadása
+                            kerdesValasz.push({ "valasz": data.value });
+                            console.log(kerdesValasz);
+
+                            const messageElement = document.createElement("div");
+                            messageElement.classList.add("messageDiv");
+                            //---- Üzenet elküldőjének képe ----
+                            const img = document.createElement("img");
+                            img.setAttribute("src", "https://randomuser.me/api/portraits/men/20.jpg");
+                            img.setAttribute("alt", "Avatar");
+                            messageElement.appendChild(img);
+                            //-- Üzenet szövege ----
+                            const bekezdes = document.createElement("p");
+                            bekezdes.textContent = data.value;
+                            messageElement.appendChild(bekezdes);
+                            //---- Üzenet elküldésének ideje ----
+                            const timeSpan = document.createElement("span");
+                            timeSpan.textContent = new Date().toLocaleTimeString();
+                            messageElement.appendChild(timeSpan);
+                            // Üzenet hozzáadása a megjelenítőhöz
+                            messageContainer.appendChild(messageElement);
+                            // Görgetés az utolsó üzenethez
+                            messageContainer.scrollTop = messageContainer.scrollHeight;
+                        });
+                }
+            });
+
+
+            function hideOnEmpty() {
+                var text = this.value;
+                if (text !== '') {
+                    document.getElementById("kuldesGomb").style.display = "inline";
+                } else {
+                    document.getElementById("kuldesGomb").style.display = "none";
+                }
+            }
+            messageInput.addEventListener('input', hideOnEmpty);
+        });
+    </script>
+
+</body>
+
+</html>

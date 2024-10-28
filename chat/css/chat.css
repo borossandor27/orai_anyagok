@@ -1,0 +1,95 @@
+#chatWindow{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+.messageDiv{
+    border: 2px solid #669900;
+    background-color: rgba(204, 255, 204,0.5);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.messageDiv::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+.messageDiv img{
+    float: left;
+    max-width: 5vw;
+    height: auto;
+    margin-right: 2vw;
+    border-radius: 50%;
+}
+.messageDiv img.right{
+    float: right;
+    margin-left: 2vw;
+    margin-right: 0;
+}
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+/* Üzenet megjelenítő terület */
+.messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+/* Üzenet doboz stílus */
+.message {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    max-width: 80%;
+    align-self: flex-end;
+}
+/* Üzenetküldő form */
+.message-form {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.message-form textarea {
+    flex: 1;
+    resize: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+.message-form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bs-green);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.message-form button:hover {
+    background-color: #669900;
+    color:white;
+}
