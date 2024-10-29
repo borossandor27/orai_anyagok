@@ -7,7 +7,7 @@ app.use(cors()); //-- böngésző CORS védelem kikapcsolás
 app.use(express.json());
 fruits = [];
 const bodyParser = require("body-parser");
-//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.send("Helló Express!");
 });
@@ -18,7 +18,7 @@ app.post("/fruit", (req, res) => {
   let newFruit = req.body;
   newFruit.id = fruits.length + 1;
   fruits.push(newFruit);
-  res.send("Az új gyümölcs adatai: " + JSON.stringify(req.body));
+  res.status(201).send(JSON.stringify(newFruit));
 });
 app.listen(PORT, () => {
   console.log(`Express szerver indítva. http://localhost:${PORT}`);

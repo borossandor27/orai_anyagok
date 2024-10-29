@@ -20,6 +20,7 @@ function listCards(data){
     data.forEach((element) => {
         let card = document.createElement("div");
         card.className = "card";
+        card.style.margin = "1vw";
         card.innerHTML = `<div class="card-body">
         <h5 class="card-title">${element.megnevezes}</h5>
         <p class="card-text"><i>egységár</i>: ${element.egysegara} Ft/${element.mennyisegiEgyseg}</p>
