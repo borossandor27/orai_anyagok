@@ -10,6 +10,7 @@ form {
     background-color: #ff69b4;
     padding: 5vh;
     max-width: 60%;
+    min-width: 40rem;
     margin: 2vh auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -32,7 +33,7 @@ input[type="number"] {
     text-align: right;
 }
 select {
-    width: 30%;
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     display: inline-block;
@@ -50,7 +51,7 @@ button {
     border-radius: 5px;
 }
 .bevitel {
-    width: 15rem;
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
     display: inline-block;

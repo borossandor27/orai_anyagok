@@ -25,7 +25,7 @@ function listCards(data){
         <h5 class="card-title">${element.megnevezes}</h5>
         <p class="card-text"><i>egységár</i>: ${element.egysegara} Ft/${element.mennyisegiEgyseg}</p>
         <p class="card-text"><i>mennyiség</i>: ${element.mennyiseg} ${element.mennyisegiEgyseg}</p>
-        <p class="card-text"><i>értéke</i>: <strong>${element.mennyiseg*element.egysegara} Ft</strong></p>
+        <p class="card-text"><i>értéke</i>: <strong>${(element.mennyiseg*element.egysegara).toFixed(2)} Ft</strong></p>
         </div>`;
         cardContainer.appendChild(card);}
     );

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módosítás</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="update.js"></script>
+</head>
+<body>
+    <div>
+        <form action="#" id="updateForm" enctype="multipart/form-data">
+            <p class="bevitel">
+               <select name="id" id="id">
+                    <option value="1">Alma</option>
+                    <option value="2">Körte</option>
+                    <option value="3">Szilva</option>
+                    <option value="4">Barack</option>
+                    <option value="5">Málna</option>
+                    <option value="6">Eper</option>
+                    <option value="7">Cseresznye</option>
+                    <option value="8">Meggy</option>
+                    <option value="9">Citrom</option>
+                    <option value="10">Narancs</option>
+                </select>
+            </p>
+            <p class="beviteli">
+                <input type="text" name="megnevezes" id="megnevezes" min="5" placeholder="Megnevezés" value="" required>
+            </p>
+            <p class="beviteli">
+                <input type="number" name="egysegara" id="egysegara" placeholder="egységára" value="" required>
+            </p>
+            <p class="beviteli">
+                <input type="number" name="mennyiseg" id="mennyiseg" placeholder="mennyiség" value="" step=".01" required>
+            
+                <select name="mennyisegiEgyseg" id="mennyisegiEgyseg">
+                    <option value="kg" selected>kg</option>
+                    <option value="db">db</option>  
+                </select>
+            </p>
+                    <button type="button" id="updateButton">Módosítás</button>
+        </form>
+    </div>
+</body>
+</html>

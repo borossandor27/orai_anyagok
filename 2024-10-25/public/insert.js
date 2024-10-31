@@ -3,16 +3,16 @@ const backendurl = "http://localhost:3000/fruit";
 document.addEventListener("DOMContentLoaded", function () {
   const createButton = document.getElementById("createButton");
   function ertekBeallit() {
-    let mennyiseg=parseFloat(document.getElementById("mennyiseg").value);
-    let egysegara=parseFloat(document.getElementById("egysegara").value);
-    let ertek=mennyiseg*egysegara;
-    return ertek.toFixed(2)+" Ft";
+    let mennyiseg = parseFloat(document.getElementById("mennyiseg").value);
+    let egysegara = parseFloat(document.getElementById("egysegara").value);
+    let ertek = mennyiseg * egysegara;
+    return ertek.toFixed(2) + " Ft";
   }
   document.getElementById("mennyiseg").addEventListener("input", function () {
-    document.getElementById("ertek").value=ertekBeallit();
+    document.getElementById("ertek").value = ertekBeallit();
   })
   document.getElementById("egysegara").addEventListener("input", function () {
-    document.getElementById("ertek").value=ertekBeallit();
+    document.getElementById("ertek").value = ertekBeallit();
   })
   createButton.addEventListener("click", async function (event) {
     //-- böngésző alapértelmezés felülírása, ne küldje el azonnal a backendre az adatokat
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const response = await fetch(backendurl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(json),
     });
