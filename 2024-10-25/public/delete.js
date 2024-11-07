@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     listaFrissites();
-    document.getElementById("updateButton").addEventListener("click", function () {
-        let modifiedFruit = new FormData(document.getElementById("updateForm"));
+    document.getElementById("deleteButton").addEventListener("click", function () {
+        let modifiedFruit = new FormData(document.getElementById("deleteForm"));
         modifiedFruit = Object.fromEntries(modifiedFruit);
         console.log(modifiedFruit);
         fetch(backendurl + "/" + modifiedFruit.id, {
-            method: "PUT",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -40,6 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("mennyiseg").value = data.mennyiseg;
         document.getElementById("mennyisegiEgyseg").value = data.mennyisegiEgyseg;
     });
-    document.getElementById("updateButton").addEventListener("click", async function () { });
+    document.getElementById("deleteButton").addEventListener("click", async function () { });
 
 })
