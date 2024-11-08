@@ -53,7 +53,8 @@ app.post('/vevo', (req, res) => {
             res.status(500).send('Adatbázis hiba történt.');
             return; // Ha hiba van, akkor kilépő a programból
         }
-        res.status(201).send(rows);
+        let lastInsertId = rows.insertId;
+        res.status(201).send(lastInsertId, rows.vnev, rows.vcim);
     });
 });
 app.listen(3000, () => {
