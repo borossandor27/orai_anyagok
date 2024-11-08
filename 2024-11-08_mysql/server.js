@@ -1,25 +1,61 @@
-const express = require("express"); //-- betölti az express modult
-const app = express(); //-- példányosítás
-const mysql = require("mysql2"); //-- betölti a mysql2 modult
-const connection = mysql.createConnection({ //-- ezekkel az adatokkal kapcsolódik az adatbázishoz
+const express = require('express');
+const app = express();
+app.use(express.json()); // JSON típusú adatok fogadásához
+const mysql = require('mysql2');
+const connection = mysql.createConnection({
     host: "127.0.0.1",
+    port: 3306,
     user: "root",
     password: "",
-    database: "pizza",
-    encoding: "utf8"
+    database: "pizza"
 });
-connection.connect(function (err) { //-- kapcsolódás
+connection.connect(function(err) {
     if (err) {
-        console.log("Adatbázis kapcsolódás sikertelen: ", err.message);
-        return; //-- ha nem sikerült a kapcsolódás, akkor kilép a program
+        console.error('error connecting: ' + err.stack);
+        return; // Ha hiba van, akkor kilépünk a programból
     }
-    console.log("Adatbázis kapcsolódás sikeres!");
+    console.log('Kapcsolódva az adatbázishoz.');
 });
-let sqlStatement = "SELECT * FROM `vevo` WHERE 1;"; //-- lekérdezés
-connection.query(sqlStatement, function (err, rows) {
-    if (err) {
-        console.log("Hiba a lekérdezés során! ", err.message);
-        return; //-- ha hiba van a lekérdezésben, akkor kilép a program
-    }
-    console.log(rows); //-- kiírja a lekérdezés eredményét
+//-- Minden vevő lekérdezése
+app.get('/vevo', (req, res) => {
+    let sql = 'SELECT vazon,vnev,vcim FROM vevo';
+    connection.query(sql, function(err, rows) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Adatbázis hiba történt.');
+            return; // Ha hiba van, akkor kilépünk a programból
+        }
+        res.send(rows);
+    }); 
+});
+//-- egy vevő lekérdezése
+app.get('/vevo/:id', (req, res) => {
+    let id = req.params.id;
+    let sql = 'SELECT vazon,vnev,vcim FROM vevo WHERE vazon = ?';
+    let sqlParams = [id];
+    connection.query(sql, sqlParams, function(err, rows) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Adatbázis hiba történt.');
+            return; // Ha hiba van, akkor kilépő a programból
+        }
+        res.send(rows);
+    });
+})
+//-- új vevő felvétele
+app.post('/vevo', (req, res) => {
+    let uj = req.body;
+    let sql = 'INSERT INTO vevo (vazon, vnev, vcim) VALUES (NULL,?,?)'; //-- vazon autoincrement!
+    let sqlParams = [uj.vnev, uj.vcim];
+    connection.query(sql, sqlParams, function(err, rows) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Adatbázis hiba történt.');
+            return; // Ha hiba van, akkor kilépő a programból
+        }
+        res.status(201).send(rows);
+    });
+});
+app.listen(3000, () => {
+    console.log('A szerver elindult a 3000-es porton.');
 });
