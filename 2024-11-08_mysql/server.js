@@ -57,6 +57,35 @@ app.post('/vevo', (req, res) => {
         res.status(201).send(lastInsertId, rows.vnev, rows.vcim);
     });
 });
+//-- vevő módosítása
+app.put('/vevo/:id', (req, res) => {
+    let id = req.params.id;
+    let uj = req.body;
+    let sql = 'UPDATE vevo SET vnev = ?, vcim = ? WHERE vazon = ?';
+    let sqlParams = [uj.vnev, uj.vcim, id];
+    connection.query(sql, sqlParams, function(err, rows) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Adatbázis hiba történt.');
+            return; // Ha hiba van, akkor kilép a programból
+        }
+        res.status(201).send(rows);
+    });
+});
+//-- vevő törlése
+app.delete('/vevo/:id', (req, res) => {
+    let id = req.params.id;
+    let sql = 'DELETE FROM vevo WHERE vazon = ?';
+    let sqlParams = [id];
+    connection.query(sql, sqlParams, function(err, rows) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Adatbázis hiba történt.');
+            return; // Ha hiba van, akkor kilépő a programból
+        }
+        res.status(201).send(rows);
+    });
+});
 app.listen(3000, () => {
     console.log('A szerver elindult a 3000-es porton.');
 });
