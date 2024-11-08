@@ -81,7 +81,7 @@ app.delete('/vevo/:id', (req, res) => {
         if (err) {
             console.error(err);
             res.status(500).send('Adatbázis hiba történt.');
-            return; // Ha hiba van, akkor kilépő a programból
+            return; // Ha hiba van, akkor kilép a programból
         }
         res.status(201).send(rows);
     });
