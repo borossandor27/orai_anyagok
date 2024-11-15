@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciklusok gyakorló</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1><%= title %></h1>
+    <ol>
+        <% for (const key in object) { %>
+            <li>kulcs:<%= key %>, érték: <%= object[key] %></li>
+        <% }; %>
+    </ol>
+</body>
+</html>
