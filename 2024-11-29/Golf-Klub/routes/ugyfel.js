@@ -26,7 +26,7 @@ router.delete('/:uazon', (req, res) => {
     res.send(`Ugyfel adatainak lekérése, azonosító: ${uazon}`);
 });
 
-router.post('/register',async (req, res) => {
+router.post('/register', async (req, res) => {
     console.log(req.body);
     let ujugyfel = await db.insertUgyfel(req.body);
     res.header('Content-Type', 'application/json');
