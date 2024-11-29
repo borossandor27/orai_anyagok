@@ -1,0 +1,23 @@
+http://localhost:3000/register be:felhasznalo, jelszo, jelszo2 vissza:true method:post
+ 
+http://localhost:3000/login be:felhasznalo, jelszo vissza:true method:post
+ 
+http://localhost:3000/befizetesek vissza:befizetesek adattabla method:get
+ 
+http://localhost:3000/befizetesek/:uazon vissza: adott azonosito alapjan befizetesek adattabla method:get
+ 
+http://localhost:3000/befizetes be:adatok vissza:true method:post
+ 
+http://localhost:3000/ugyfelek vissza:befizetesek adattabla method:get
+ 
+http://localhost:3000/ugyfelek/:uazon  vissza: adott azonosito alapjan befizetesek adattabla method:get
+ 
+http://localhost:3000/tagsagok  vissza:tagok adattabla method:get
+ 
+http://localhost:3000/tagsagok/:uazon  vissza: adott azonosito alapjan tagok adattabla method:get
+ 
+http://localhost:3000/jelenlet vissza: jelenlet adattabla method:get
+ 
+http://localhost:3000/jelenlet be:idopontok method:post
+
+http://localhost:3000/jelenlet be:idopont modositas method:patch
