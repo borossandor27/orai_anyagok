@@ -22,6 +22,12 @@ connection.connect((err) => {
 
 export async function getUgyfelek() {
     let sql = 'SELECT * FROM ugyfelek';
-    const [result] = await connection.execute(sql);
+    const [result] = await connection.execute(sql); //-- a body-ben lévő adatokat a result-ba másolja
+    return result;
+}
+
+export async function getUgyfel(id) {
+    let sql = 'SELECT * FROM ugyfelek WHERE uazon = ?';
+    const [result] = await connection.execute(sql, [id]); //-- a body-ben lévő adatokat a result-ba másolja
     return result;
 }

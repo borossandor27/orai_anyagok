@@ -10,6 +10,12 @@ router.get('/', async (req, res) => {
     res.status(201).send(ugyfelek);
 });
 
+router.get('/:uazon', async (req, res) => {
+    let ugyfel = await db.getUgyfel(req.params.uazon);
+    res.header('Content-Type', 'application/json');
+    res.status(201).send(ugyfel);
+});
+
 router.put('/:uazon', (req, res) => {
     const { uazon } = req.params;
     res.send(`Ugyfel adatainak lekérése, azonosító: ${uazon}`);
