@@ -2,6 +2,10 @@ import express from 'express';
 
 const app = express();
 app.use(express.json());
+//-- form adatok feldolgozásához
+import bodyParser from 'body-parser';
+app.use(bodyParser.urlencoded({ extended: true }));
+
 import routeBefizetes from './routes/befizetes.js';
 app.use("/golf/befizetes", routeBefizetes);
 

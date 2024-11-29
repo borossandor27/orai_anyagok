@@ -31,3 +31,9 @@ export async function getUgyfel(id) {
     const [result] = await connection.execute(sql, [id]); //-- a body-ben lévő adatokat a result-ba másolja
     return result;
 }
+
+export async function insertUgyfel(ugyfel) {
+    let sql = 'INSERT INTO ugyfelek (uazon, unev, uemail, utel, ujelszo, uszuletett) VALUES (NULL, ?, ?, ?, ?, ?)';
+    const [result] = await connection.execute(sql, [ugyfel.unev, ugyfel.uemail, ugyfel.utel, ugyfel.ujelszo, ugyfel.uszuletett]);
+    return result;
+}
