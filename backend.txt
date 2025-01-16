@@ -1,3 +1,9 @@
 https://retoolapi.dev/2Lud2e/data
 
 GET - https://retoolapi.dev/2Lud2e/data
+
+{
+"id": 1,
+"nev": "Fabien Carnoghan",
+"szuletesiev": 2007
+}
