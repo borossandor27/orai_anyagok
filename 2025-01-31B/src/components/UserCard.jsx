@@ -8,8 +8,8 @@ import TelefonszamComponent from './TelefonszamComponent';
 const UserCard = ({profilkep, nev, email, telefonszam} ) => {
    
     return (
-        <div>
-            <Profilkep src={profilkep} alt={nev} />
+        <div className="user-card">
+            <p style={{textAlign: "center"}}><Profilkep src={profilkep} alt={nev} /></p>
             <NevComponent nev={nev} />
             <EmailComponent email={email} />
             <TelefonszamComponent telefonszam={telefonszam} />

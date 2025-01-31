@@ -5,6 +5,7 @@ const ProfilkepImg = styled.img`
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
+    margin: 10px auto;
 `;
 
 function Profilkep({src, alt}) {
