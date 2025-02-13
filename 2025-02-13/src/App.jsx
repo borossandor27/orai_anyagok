@@ -4,16 +4,17 @@ import MyButton from './componens/MyButton'
 import './App.css'
 const baseURL = 'https://retoolapi.dev/MVwfIW/data'
 
-const setUsers = async () => {
-  const { data } = await axios.get(baseURL)
-  console.log(data)
-  setUsers(data)
-}
+
 function App() {
   const [users, setUsers] = useState([])
   useEffect(() => {
-    setUsers()
+    fetchUsers()
   }, [])
+  const fetchUsers = async () => {
+    const { data } = await axios.get(baseURL)
+    console.log(data)
+    setUsers(data)
+  }
 
 
   return (
