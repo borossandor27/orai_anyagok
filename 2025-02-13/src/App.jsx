@@ -10,24 +10,39 @@ function App() {
 
   useEffect(() => {
     getAllUsers()
+
   }, []) // csak mountoláskor fusson le
   const getAllUsers = async () => {
     const { data } = await axios.get(baseURL) // adatok lekérése
     setUsers(data)
   }
 
-  const createUser = async () => {
-    const nev = document.getElementById('nev').value
-    const fizetes = document.getElementById('fizetes').value
-    const { data } = await axios.post(baseURL, { nev, fizetes })
-    setUsers([...users, data])
-  }
-  const updateUser = async () => {
+  const createUser = async (event) => {
+    event.preventDefault()
+    try {
+        const nev = document.getElementById('nev').value
+        const fizetes = document.getElementById('fizetes').value
+        const { data } = await axios.post(baseURL, { nev, fizetes })
+ 
+        if (data.error) {
+            alert(data.error)
+            return
+        }
+        alert('Sikeres adatfelvétel')
+        getAllUsers()
+    } catch (error) {
+        console.error('Hiba történt:', error)
+        alert('Hiba történt az adatküldés során.')
+    }
+ }
+ 
+  const updateUser = async (e) => {
+    e.preventDefault()
     const id = document.getElementById('id').value
     const nev = document.getElementById('nev').value
     const fizetes = document.getElementById('fizetes').value
     const { data } = await axios.put(`${baseURL}/${id}`, { nev, fizetes })
-    setUsers(users.map(user => user.id === id ? data : user))
+    getAllUsers()
   }
 
   const fillForm = (id) => {
@@ -35,6 +50,10 @@ function App() {
     document.getElementById('id').value = user.id
     document.getElementById('nev').value = user.nev
     document.getElementById('fizetes').value = user.fizetes
+  }
+  const deleteUser = async (id) => {
+    await axios.delete(`${baseURL}/${id}`)
+    getAllUsers()
   }
 
   return (
@@ -47,7 +66,7 @@ function App() {
           <input type="number" name="fizetes" id="fizetes" placeholder='fizetés' />
         </fieldset>
         <MyButton color='green' onClick={createUser}>Küldés</MyButton>
-        <MyButton color='red'>Módosítás</MyButton>
+        <MyButton color='red' onClick={updateUser}>Módosítás</MyButton>
       </form>
       <table>
         <thead>
@@ -64,7 +83,7 @@ function App() {
               <td>{nev}</td>
               <td>{fizetes}</td>
               <td><MyButton color='blue' onClick={() => fillForm(id)}>Módosít</MyButton></td>
-              <td><MyButton color='red'>Törlés</MyButton></td>
+              <td><MyButton color='red' onClick={() => deleteUser(id)}>Törlés</MyButton></td>
             </tr>
           ))}
         </tbody>
