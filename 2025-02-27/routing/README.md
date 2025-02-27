@@ -65,8 +65,8 @@ export default App;
 ## `<Route>`
 Meghatározza, hogy egy adott útvonal (path) esetén melyik komponenst kell megjeleníteni.
 - A `Routes` komponensen belül kell elhelyezni.
-- A `**path**` prop határozza meg az útvonalat.
-- Az `**element**` prop adja meg a megjelenítendő komponenst.
+- A `path` prop határozza meg az útvonalat.
+- Az `element` prop adja meg a megjelenítendő komponenst.
 ```jsx
     <Route path="/home" element={<Home />} />
 ```
@@ -86,7 +86,7 @@ Meghatározza, hogy egy adott útvonal (path) esetén melyik komponenst kell meg
 ## `<Link>`
 Kliensoldali navigációt biztosít, az **oldal újratöltése nélkül**.
 - Az `<a>` HTML elem React-alternatívája.
-- A `*to*` propban kell megadni az útvonalat.
+- A **`to`** propban kell megadni az útvonalat.
 
 # Összegzés
 
@@ -94,5 +94,5 @@ Kliensoldali navigációt biztosít, az **oldal újratöltése nélkül**.
 |-----------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | `<BrowserRouter>` | A React alkalmazás alaproutere, kezeli az URL-változásokat.  | Az egész alkalmazást be kell burkolni vele. HTML5 History API-t használ.          |
 | `<Routes>`       | Az útvonalak listáját tartalmazza, és eldönti, melyik Route jelenjen meg. | Csak a Routes belsejében lehet Route, az első találatot rendereli.                |
-| `<Route>`        | Egy adott útvonalhoz tartozó komponenst jelenít meg.         | A path prop határozza meg az útvonalat, az element prop adja meg a komponenst.    |
-| `<Link>`         | Kliensoldali navigáció újratöltés nélkül.                    | A to prop adja meg az útvonalat, NavLink változattal kiemelhető az aktív link.    |
+| `<Route>`        | Egy adott útvonalhoz tartozó komponenst jelenít meg.         | A **path** prop határozza meg az útvonalat, az element prop adja meg a komponenst.    |
+| `<Link>`         | Kliensoldali navigáció újratöltés nélkül.                    | A **to** prop adja meg az útvonalat, NavLink változattal kiemelhető az aktív link.    |
