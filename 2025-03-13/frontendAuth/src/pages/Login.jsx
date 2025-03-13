@@ -1,52 +1,56 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    useEffect((e) => {
-        if (e.target.type === 'submit') {
-            const baseUrl = 'http://localhost:3000/Login'
-            const body = JSON.stringify({ username, password })
-            const headers = { 'Content-Type': 'application/json' }
-            const method = 'POST'
-            fetch(baseUrl, { method, headers, body })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    localStorage.setItem('token', data.token)
-                })
+    const handleLogin = async (e) => {
+        e.preventDefault(); // Megakadályozza az űrlap alapértelmezett küldését
+        const baseUrl = 'http://localhost:3000/Login';
+        const body = JSON.stringify({ username, password });
+        const headers = { 'Content-Type': 'application/json' };
 
-        } else {
-            const baseUrl = 'http://localhost:3000/Register'
-            const body = JSON.stringify({ username, password })
-            const headers = { 'Content-Type': 'application/json' }
-            const method = 'POST'
-            fetch(baseUrl, { method, headers, body })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    localStorage.setItem('token', data.token)
-                })
+        try {
+            const response = await fetch(baseUrl, { method: 'POST', headers, body });
+            const data = await response.json();
+            console.log(data);
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+            }
+        } catch (error) {
+            console.error("Login failed", error);
         }
-    }, []);
+    };
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value)
-    }
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+    const handleRegister = async () => {
+        const baseUrl = 'http://localhost:3000/Register';
+        const body = JSON.stringify({ username, password });
+        const headers = { 'Content-Type': 'application/json' };
+
+        try {
+            const response = await fetch(baseUrl, { method: 'POST', headers, body });
+            const data = await response.json();
+            console.log(data);
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+            }
+        } catch (error) {
+            console.error("Registration failed", error);
+        }
+    };
 
     return (
-        <form>
+        <form onSubmit={handleLogin}>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" name="username" onChange={handleUsernameChange} />
+            <input type="text" id="username" name="username" onChange={(e) => setUsername(e.target.value)} />
+
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" onChange={handlePasswordChange} />
+            <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+
             <button type="submit">Login</button>
-            <button type="button">Register</button>
+            <button type="button" onClick={handleRegister}>Register</button>
         </form>
-    )
-}
-export default Login
+    );
+};
+
+export default Login;
