@@ -4,9 +4,8 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = async (e) => {
-        e.preventDefault(); // Megakadályozza az űrlap alapértelmezett küldését
-        const baseUrl = 'http://localhost:3000/Login';
+    const handleRegister = async () => {
+        const baseUrl = 'http://localhost:3000/Register';
         const body = JSON.stringify({ username, password });
         const headers = { 'Content-Type': 'application/json' };
 
@@ -18,12 +17,11 @@ const Login = () => {
                 localStorage.setItem('token', data.token);
             }
         } catch (error) {
-            console.error("Login failed", error);
+            console.error("Registration failed", error);
         }
     };
-
-    const handleRegister = async () => {
-        const baseUrl = 'http://localhost:3000/Register';
+    const handleLogin = async () => {
+        const baseUrl = 'http://localhost:3000/Login';
         const body = JSON.stringify({ username, password });
         const headers = { 'Content-Type': 'application/json' };
 
