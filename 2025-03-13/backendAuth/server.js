@@ -24,7 +24,7 @@ app.post('/register', (req, res) => {
     bcrypt.genSalt(saltRounds, (err, salt) => {
         if (err) {
             console.log(err);
-        } else {    
+        } else {
             bcrypt.hash(password, salt, (err, hash) => {
                 if (err) {
                     console.log(err);
@@ -49,3 +49,41 @@ app.post('/register', (req, res) => {
 }
 );
 
+app.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    db.query(
+        'SELECT * FROM users WHERE username = ?',
+        username,
+        (err, result) => {
+            if (err) {
+                res.send({ err: err });
+            }
+
+            if (result.length > 0) {
+                bcrypt.compare(password,
+                    result[0].password,
+                    (error, response) => {
+                        if (response) {
+                            //-- sikeres azonoítás és token generálás
+                            const id = result[0].id;
+                            const token = jwt.sign({ id }, 'jwtSecret', {
+                                expiresIn: "3 days",
+                            });
+                            res.json({ auth: true, token: token, result: result });
+                        } else {
+                            res.json({ auth: false, message: 'wrong username/password combination' });
+                        }
+                    });
+            } else {
+                res.json({ auth: false, message: 'No user found' });
+            }
+        }
+    );
+}
+);
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
