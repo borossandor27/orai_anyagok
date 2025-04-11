@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.35906.104 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{5BF1469E-3C04-448D-B9A1-57DE7EE7635B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoGUI", "ToDoGUI\ToDoGUI.csproj", "{E5BBF285-ED9B-4BD9-BC40-1D429110078C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BF1469E-3C04-448D-B9A1-57DE7EE7635B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF1469E-3C04-448D-B9A1-57DE7EE7635B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF1469E-3C04-448D-B9A1-57DE7EE7635B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF1469E-3C04-448D-B9A1-57DE7EE7635B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5BBF285-ED9B-4BD9-BC40-1D429110078C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BBF285-ED9B-4BD9-BC40-1D429110078C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5BBF285-ED9B-4BD9-BC40-1D429110078C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5BBF285-ED9B-4BD9-BC40-1D429110078C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {307A4279-451F-45F8-8076-8A4F4DC16DDF}
+	EndGlobalSection
+EndGlobal
